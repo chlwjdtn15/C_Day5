@@ -50,14 +50,41 @@
 
 //number가 소수이면 1을 리턴, 소수가 아니면 0을 리턴
 int is_prime_number(int number) {
+
+  int prime_Sum = 0; //소수들의 합
+  int p = 0;
+
+  for (p = 1; p <= number; p++) { // get_1_to_n_prime_number_sum(int n) 에서 받은 수 소수인지 확인;
+  
+                if(number % p   == 0 ){ //number (n)이 소수인지 확인
+
+                      prime_Sum += p; //소수면 합에다 더하기
+
+           }
+    
+  }
+
+
+  if ( prime_Sum == number + 1) { //소수인지 확인해주는 작업. 소수는 자기 수 더하기 1.
+    return 1; //소수 확인
+  }
+
+  return 0; //소수가 아님
 }
 
 // 1부터 n 사이의 수 중에서 소수의 합 반환하는 함수
 int get_1_to_n_prime_numbers_sum(int n) {
 
-  int sum = 0;
+  int sum = 0; //소수들의 합.
+  for(int i = 1; i <= n; i++) {
+    
+    if (is_prime_number(i) == 1){ //1부터 n사이에 있는 소수들이 소수인지 확인작업
+      
+      sum += i; //소수가 참이면 더하기
+    }
+  }
 
-  return sum;
+  return sum; //결과값 보내기
 }
 
 
@@ -72,7 +99,7 @@ int main(void) {
 
 
     int sum;
-  int number;
+    int number;
 
   number = 1000;
   sum = get_1_to_n_prime_numbers_sum(number);
